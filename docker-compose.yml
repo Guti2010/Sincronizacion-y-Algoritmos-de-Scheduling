@@ -1,0 +1,4 @@
+services:
+  c-app:
+    build: .
+    command: ["./app"]
