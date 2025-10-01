@@ -47,7 +47,9 @@ docker compose up
 
 # Limpiar (contenedores + volúmenes)
 docker compose down --volumes
+```
 
+🗂️ Estructura del repositorio
 .
 ├─ docker-compose.yml
 ├─ Dockerfile
