@@ -52,17 +52,30 @@ docker compose down --volumes
 🗂️ Estructura del repositorio
 .
 ├─ docker-compose.yml
+
 ├─ Dockerfile
+
 ├─ src/
+
 │  ├─ main.c
+
 │  ├─ station.c
+
 │  ├─ queue.c
+
 │  └─ ipc.c
+
 ├─ include/
+
 │  ├─ product.h
+
 │  ├─ queue.h
+
 │  ├─ ipc.h
+
 │  ├─ station.h
+
 │  └─ policy.h
+
 └─ README.md
 
