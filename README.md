@@ -1,16 +1,15 @@
 # 🏭 Línea de Ensamblaje con C, POSIX y Docker
 
-Simulación de una **línea de ensamblaje con tres estaciones (E1, E2, E3)** usando **C**, **pipes**, **colas thread-safe** (mutex + semáforos POSIX), **`fork()` + `pthread`**, y políticas **FCFS** y **Round Robin (RR)** con **quantum configurable**.  
-Se ejecuta con **Docker** y **Docker Compose** *(sin Makefile)*.
+Simulación de una **línea de ensamblaje con tres estaciones (E1, E2, E3)** usando **C**, **pipes**, **colas thread-safe** (mutex + semáforos POSIX), **`fork()` + `pthread`**, y políticas **FCFS** y **Round Robin (RR)** con **quantum configurable**. Se ejecuta con **Docker** y **Docker Compose** *(sin Makefile)*.
 
 ---
 
 ## ✨ Características
 
-- **3 estaciones en procesos separados** (cada una con 1 hilo lector + 1 hilo worker).
-- **Comunicación entre estaciones** vía **pipes**; dentro de cada estación hay **cola thread-safe** (productor/consumidor).
+- **3 estaciones** en **procesos separados** (cada una con 1 **hilo lector** + 1 **hilo worker**).
+- **Comunicación** entre estaciones vía **pipes**; dentro de cada estación hay **cola thread-safe** (productor/consumidor).
 - **FCFS (E1)** y **RR (E2/E3)** con **quantum configurable** (p. ej. `200 ms`).
-- **Bursts por estación** (fijos y comunes a todos los productos): p. ej. `E1=400 ms`, `E2=600 ms`, `E3=300 ms` → **burst total por producto = 1.300 s**.
+- **Bursts por estación** (fijos y comunes a todos los productos): `E1=400 ms`, `E2=600 ms`, `E3=300 ms` → **burst total** por producto **= 1.300 s**.
 - **Tiempos de llegada simulados**: `0, 1, 2, … s`.
 - **Registro de slices** para imprimir un **Gantt** por estación (inicio–fin por producto).
 - **Resumen final**: promedio **WT**, promedio **TAT**, y **orden final** (IDs en el orden en que salen de E3).
@@ -42,3 +41,9 @@ Se ejecuta con **Docker** y **Docker Compose** *(sin Makefile)*.
 ```bash
 # Primera vez: compila el binario y arranca el contenedor
 docker compose up --build
+
+# Siguientes ejecuciones
+docker compose up
+
+# Limpiar (contenedores + volúmenes)
+docker compose down --volumes
